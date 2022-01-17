@@ -1,3 +1,4 @@
+from urllib import response
 from flask import Flask, jsonify, render_template, request
 from services.ssl_checker import get_expiry_dates
 
@@ -33,6 +34,23 @@ def home():
         return jsonify(
             message="No valid method has been sent"
         )
+
+@app.route('/api/v1/cert_check', methods=["GET", "POST"])
+def cert_check():
+    if request.method == "GET":
+        return jsonify(
+            health_check="UP"
+        )
+    elif request.method == "POST":
+        return jsonify(
+            response="not expired"
+        )
+    else:
+        return jsonify(
+            message="No valid method has been sent"
+        )
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
