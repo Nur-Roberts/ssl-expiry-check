@@ -4,7 +4,8 @@ Python Flask Based SSL website expiry checker both Frontend and API
 
 ### To Do:
 
-- [ ] API endpoints
+- [X] API endpoints
 - [ ] API User guide Page
-- [ ] Friendly error response
+- [X] Friendly error response
+- [ ] Website User guide Page
 

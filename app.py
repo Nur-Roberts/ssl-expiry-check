@@ -18,22 +18,21 @@ def home():
         url = re.compile(r"https?://(www\.)?")
         hostname = url.sub('', hostname).strip().strip('/')
         # get expiry data
-        message, start_date, end_date = get_expiry_dates(hostname)
-        if message == True:
+        expiry_payload_data = get_expiry_dates(hostname)
+        if expiry_payload_data["message"] == True:
             return render_template(
                 "index_results.html",
                 cert_hostname = hostname,
-                cert_start_date = start_date,
-                cert_end_date = end_date
+                cert_start_date = expiry_payload_data["start_date"],
+                cert_end_date = expiry_payload_data["end_date"],
+                cert_expiry_days = expiry_payload_data["days_diff"],
+                cert_status = expiry_payload_data["expiry_status"]
             )
 
         else:
             return render_template(
                 "index_results_error.html",
-                cert_hostname = hostname,
-                cert_start_date = start_date,
-                cert_end_date = end_date,
-                error_message = message
+                error_message = expiry_payload_data["message"]
             )
     else:
         return jsonify(
@@ -51,10 +50,14 @@ def cert_check(hostname):
         url = re.compile(r"https?://(www\.)?")
         hostname = url.sub('', hostname).strip().strip('/')
         # get expiry data
-        message, start_date, end_date = get_expiry_dates(hostname)
+        expiry_payload_data = get_expiry_dates(hostname)
 
         return jsonify(
-            response="not expired"
+            cert_hostname = hostname,
+            cert_start_date = expiry_payload_data["start_date"],
+            cert_end_date = expiry_payload_data["end_date"],
+            cert_expiry_days = expiry_payload_data["days_diff"],
+            cert_status = expiry_payload_data["expiry_status"]
             
         )
     else:
