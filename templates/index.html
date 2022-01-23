@@ -29,9 +29,9 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <div>
-          <h3 class="float-md-start mb-0 textshadows">SSL Checker</h3>
+          <h3 class="float-md-start mb-0 textshadows">SSL Expiry Checker</h3>
           <nav class="nav nav-masthead justify-content-center float-md-end ">
-            <a class="nav-link active" aria-current="page" href="#">Single checker</a>
+            <a class="nav-link active" aria-current="page" href="#">Single Website check</a>
             <a class="nav-link" href="#">API</a>
           </nav>
         </div>
@@ -39,14 +39,14 @@
 
       <main class="px-3">
 
-        <h1 class="textshadows">Single Website Checker</h1>
-        <p class="lead">Simply supply a valid hostname below and a returned start and end date will be supplied</p>
+        <h1 class="textshadows">Single Website Check</h1>
+        <p class="lead">Simply supply a valid FQDN below which will produce certificate dates and expiry days left</p>
 
 
         <form action="{{ url_for('home') }}" method="POST">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="sub.example.com" name="hostname" required>
-                <label for="floatingInput" style="color: black;">Hostname</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="https://sub.example.com" name="hostname" required>
+                <label for="floatingInput" style="color: black;">FQDN</label>
             </div>
             <button type="submit" class="myButton">Check</button>
 
@@ -55,7 +55,7 @@
       </main>
 
       <footer class="mt-auto">
-        <p>by DevationX</p>
+        <p>#DevOps</p>
       </footer>
     </div>
 

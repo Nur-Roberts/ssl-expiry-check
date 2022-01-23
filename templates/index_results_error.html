@@ -37,16 +37,17 @@
 
       <main class="px-3">
 
-        <h1 class="textshadows">Single Website Checker</h1>
-        <p class="lead">Simply supply a valid hostname below and a returned start and end date will be supplied</p>
+        <h1 class="textshadows">Single Website Check</h1>
+        <p class="lead">Simply supply a valid FQDN below which will produce certificate dates and expiry days left</p>
 
 
         <form action="{{ url_for('home') }}" method="POST">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="sub.example.com" name="hostname">
-                <label for="floatingInput" style="color: black;">Hostname</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="https://sub.example.com" name="hostname" required>
+                <label for="floatingInput" style="color: black;">FQDN</label>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="submit" class="myButton">Check</button>
+
         </form>
         <div class="alert alert-danger" role="alert" style="margin-top: 16px;">
           {{ error_message }}
