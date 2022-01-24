@@ -39,13 +39,16 @@ def home():
             message="No valid method has been sent"
         )
 
-@app.route('/api/v1/cert_check/<string:hostname>', methods=["GET", "POST"])
-def cert_check(hostname):
+@app.route('/api/v1/cert_check/check', methods=["GET", "POST"])
+def cert_check():
     if request.method == "GET":
         return jsonify(
+            # Implement health checker
             health_check="UP"
         )
     elif request.method == "POST":
+
+        hostname = request.json['hostname']
         # strip fqdn trimming
         url = re.compile(r"https?://(www\.)?")
         hostname = url.sub('', hostname).strip().strip('/')
